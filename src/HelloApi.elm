@@ -163,14 +163,7 @@ renderTodos lst =
                 li []
                     [ div []
                         [ text (l.name ++ "\t")
-                        , text
-                            (if l.isComplete then
-                                "Yes\t"
-
-                             else
-                                "No\t"
-                            )
-                        , button [ onClick (ChangeDone l.id l.isComplete) ] [ text "Is Complete? " ]
+                        , input [ type_ "checkbox", onClick (ChangeDone l.id l.isComplete) ] []
                         ]
                     ]
             )
@@ -193,7 +186,6 @@ view model =
             [ renderTodos model.todoItems ]
         , div [] [ text model.message ]
         , renderInput model
-        , div [] [ button [ onClick GetTodo ] [ text "get todos" ] ]
         ]
 
 
